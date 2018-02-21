@@ -15,63 +15,64 @@
 <body>
 	<nav class="navbar navbar-inverse bg-primary navbar-custom">
 		<div class="row">
-			<div class="col-sm-6">
-				<div class="row">
-					<div class="col-sm-3"><img src="if_package_toys_1443.png" alt="Smiley face" height="42" width="42" /></div>
-					<div class="col-sm-3"><div class="custom-navbar-text">Welcome 0x234dd</div></div>					 
-				</div>
+			
+			<div class="col-sm-8">
+				<div class="navbar-home-custom">WaySign</div>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-1">
+				<img src="if_package_toys_1443.png" alt="Smiley face" height="42" width="42" />
+			</div>
+			<div class="col-sm-3">
+				<div class="custom-navbar-text">Welcome 0x234dd</div>				 
 				<div class="custom-navbar-text">Balance: 50 Eth</div>
 			</div>
 		</div>
 	</nav>		
 	
-	<div class="container">
-		
-	
-		<div style="margin=10px;">
-			<div id="map" style="width: 100%; height: 400px; background: grey;"> </div>
-		</div>
-		
+	<div class="background-gradient-custom">
+		<div class="fill-custom"></div>
 		<div class="container">
-			<button id="addCommentButton" type="button" class="btn btn-primary button-image image" onClick="placeComment()">
-			  Add comment
-			</button>
-			<button id="commentPlacedButton" type="button" class="btn btn-primary" onClick="commentPlaced()" style="display: none">
-				Place comment to current location
-			</button>
+			<div style="margin=10px;">
+				<div id="map" style="width: 100%; height: 400px; background: grey;"> </div>
+			</div>
+			
+			<div class="container">
+				<button id="addCommentButton" type="button" class="btn btn-primary button-image image" onClick="placeComment()">
+				  Add comment
+				</button>
+				<button id="commentPlacedButton" type="button" class="btn btn-primary" onClick="commentPlaced()" style="display: none">
+					Place comment to current location
+				</button>
 
-			<!-- Modal -->
-			<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
-				<div class="modal-content">
-				  <div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Add commentary</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					  <span aria-hidden="true">&times;</span>
-					</button>
-				  </div>
-				  <div class="modal-body">
-					<form id="commentForm" >
-						<div class="form-group">
-							<input type="text" class="form-control" name="comment" id="recipient-name" placeholder="Add your commentary"></input>
-						</div>
-					</form>
-				  </div>
-				  <div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary" form="commentForm" onClick="addComment()">Submit</button>
+				<!-- Modal -->
+				<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Add commentary</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+						<form id="commentForm" >
+							<div class="form-group">
+								<input type="text" class="form-control" name="comment" id="recipient-name" placeholder="Add your commentary"></input>
+							</div>
+						</form>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary" form="commentForm" onClick="addComment()">Submit</button>
+					  </div>
+					</div>
 				  </div>
 				</div>
-			  </div>
 			</div>
 		</div>
 	</div>
-	
-	<script  type="text/javascript" charset="UTF-8" >
-
 		
+	<script  type="text/javascript" charset="UTF-8" >
 
 		/**
 		 * Boilerplate map initialization code starts below:
