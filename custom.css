@@ -15,14 +15,11 @@
 	 background-size:24px;
 }
 
-.icon {
-	text-align: center;
-}
-
 .custom-navbar-text {
 	color: white;
 	text-align: left;
 	font-weight: 600;
+	padding-left: 5px;
 }
 
 .navbar-custom {

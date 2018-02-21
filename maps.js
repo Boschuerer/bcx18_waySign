@@ -60,8 +60,7 @@ function commentPlaced(e) {
 }
 
 function addComment(e) {
-	console.log('Added comment');
-	$('#commentForm').append(`<input type="hidden" name="longitude" value="${currentMarker.lng}">`);
-	$('#commentForm').append(`<input type="hidden" name="latitude" value="${currentMarker.lat}">`);
+	var comment = $('#comment-text').val();
+	console.log(`Added comment with value ${comment} and longitude ${currentMarker.lng} and latitude ${currentMarker.lat}`);
 	return true;
 }
