@@ -64,3 +64,94 @@ function addComment(e) {
 	console.log(`Added comment with value ${comment} and longitude ${currentMarker.lng} and latitude ${currentMarker.lat}`);
 	return true;
 }
+
+function setMarker() {
+	
+	let rows = [];
+	
+	rows.push({
+		lat: 52.51532544959014,
+		lng: 13.398213534545903,
+		userID: '01',
+		score: '6'
+	}, {
+		lat: 52.50916161808097,
+		lng: 13.38193431352829,
+		userID: '02',
+		score: '2'
+	});
+	
+	/*var domElement = document.createElement('img');
+	domElement.style.width = '30px';
+	domElement.style.height = '30px';
+	domElement.src = 'if_package_toys_1443.png';*/
+	
+
+	
+
+	
+	rows.forEach(row => {
+		function hover_comment(evt) {
+		  evt.target.style.opacity = 0.8;
+		  $("#comment_details-" + row.userID).show();
+		};
+		
+		function leafe_comment(evt) {
+			evt.target.style.opacity = 1;
+			$("#comment_details-" + row.userID).hide();
+		}
+
+		var domIcon = new H.map.DomIcon(createMapEntry(row.userID, row.score), {
+		  onAttach: function(clonedElement, domIcon, domMarker) {
+			  clonedElement.addEventListener('mouseover', hover_comment);
+			  //clonedElement.addEventListener('mouseout', leafe_comment);
+		  },
+		  onDetach: function(clonedElement, domIcon, domMarker) {
+			clonedElement.removeEventListener('mouseover', hover_comment);
+			clonedElement.removeEventListener('mouseout', leafe_comment);
+		  }
+		});
+		
+		map.addObject(new H.map.DomMarker(row, {icon: domIcon}));
+	});
+	
+	
+}
+function createMapEntry(userID, score){
+	return `
+		<div class="row" style="width: 150px">
+			<div class="col-sm-2">
+				<img class="map-images" src="user_pic-${userID}.png"></img>
+			</div>
+			<div class="col-sm-8">
+				<table class="btn btn-light table-votes" style="display: none;" id="comment_details-${userID}">
+					<tr>
+						<td class="table-votes" style="border: 0 0 1px 0 solid black;">
+							<table>
+								<tr>
+									<td>
+										<button id="thumbs_up_button" type="button" class="button-only-image map-images" style="background-image: url('if_thumbs-o-up_1608724.png')" onClick="upvote()" data-toggle="tooltip" data-placement="top" title="Upvote" />
+									</td>
+									<td>
+										<button id="thumbs_down_button" type="button" class="button-only-image map-images" style="background-image: url('if_thumbs-o-down_1608725.png')" onClick="downvote()" data-toggle="tooltip" data-placement="top" title="Downvote" />
+									</td>
+								<tr>
+							</table>
+						</td>
+						<td>
+							<p style="padding-left: 5px; padding-right: 5px; display: table-cell; heigth: 100%;" data-toggle="tooltip" data-placement="top" title="Score">${score}</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	`;
+}
+
+function upvote() {
+	console.log('upvote');
+}
+
+function downvote() {
+	console.log('downvote');
+}
