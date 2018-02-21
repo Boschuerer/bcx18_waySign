@@ -104,7 +104,7 @@ function setMarker() {
 		var domIcon = new H.map.DomIcon(createMapEntry(row.userID, row.score), {
 		  onAttach: function(clonedElement, domIcon, domMarker) {
 			  clonedElement.addEventListener('mouseover', hover_comment);
-			  //clonedElement.addEventListener('mouseout', leafe_comment);
+			  clonedElement.addEventListener('mouseout', leafe_comment);
 		  },
 		  onDetach: function(clonedElement, domIcon, domMarker) {
 			clonedElement.removeEventListener('mouseover', hover_comment);
@@ -120,26 +120,26 @@ function setMarker() {
 function createMapEntry(userID, score){
 	return `
 		<div class="row" style="width: 150px">
-			<div class="col-sm-2">
-				<img class="map-images" src="user_pic-${userID}.png"></img>
+			<div class="col-sm-4">
+				<img class="map-image-user" src="user_pic-${userID}.png"></img>
 			</div>
 			<div class="col-sm-8">
 				<table class="btn btn-light table-votes" style="display: none;" id="comment_details-${userID}">
 					<tr>
-						<td class="table-votes" style="border: 0 0 1px 0 solid black;">
+						<td class="td-votes">
 							<table>
 								<tr>
 									<td>
-										<button id="thumbs_up_button" type="button" class="button-only-image map-images" style="background-image: url('if_thumbs-o-up_1608724.png')" onClick="upvote()" data-toggle="tooltip" data-placement="top" title="Upvote" />
+										<button id="thumbs_up_button" type="button" class="button-only-image map-image-vote" style="background-image: url('if_thumbs-o-up_1608724.png')" onClick="upvote('${userID}')" data-toggle="tooltip" data-placement="top" title="Upvote" />
 									</td>
 									<td>
-										<button id="thumbs_down_button" type="button" class="button-only-image map-images" style="background-image: url('if_thumbs-o-down_1608725.png')" onClick="downvote()" data-toggle="tooltip" data-placement="top" title="Downvote" />
+										<button id="thumbs_down_button" type="button" class="button-only-image map-image-vote" style="background-image: url('if_thumbs-o-down_1608725.png')" onClick="downvote('${userID}')" data-toggle="tooltip" data-placement="top" title="Downvote" />
 									</td>
 								<tr>
 							</table>
 						</td>
 						<td>
-							<p style="padding-left: 5px; padding-right: 5px; display: table-cell; heigth: 100%;" data-toggle="tooltip" data-placement="top" title="Score">${score}</p>
+							<p style="padding-left: 5px; padding-right: 5px; display: table-cell; heigth: 100%; font-weight: bold" data-toggle="tooltip" data-placement="top" title="Score">${score}</p>
 						</td>
 					</tr>
 				</table>
@@ -148,10 +148,14 @@ function createMapEntry(userID, score){
 	`;
 }
 
-function upvote() {
+function upvote(userID) {
 	console.log('upvote');
+	$("#comment_details-" + userID).css('background-color', 'green');
+	setTimeout(() => $("#comment_details-" + userID).css('background-color', 'white'), 200);
 }
 
-function downvote() {
+function downvote(userID) {
 	console.log('downvote');
+	$("#comment_details-" + userID).css('background-color', 'red');
+	setTimeout(() => $("#comment_details-" + userID).css('background-color', 'white'), 200);
 }
